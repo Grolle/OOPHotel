@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOPHotel.Presentation
+namespace OOPHotel.Controllers
 {
-    internal class Greeter
+    internal class BookingService
     {
+
     }
 }
