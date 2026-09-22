@@ -1,90 +1,91 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace OOPHotel.Controllers
-{
-    internal class RoomManager
-    {
-        public class RoomManager
-        {
-            private Room[] rooms;
-            private List<Booking> bookings;
+//namespace OOPHotel.Controllers
+//{
+//    internal class RoomManager
+//    {
+//        public class RoomManager
+//        {
+//            private Room[] rooms;
+//            private List<Booking> bookings;
 
-            public RoomManager(Room[] rooms)
-            {
-                this.rooms = rooms;
-                bookings = new List<Booking>();
-            }
+//            public RoomManager(Room[] rooms)
+//            {
+//                this.rooms = rooms;
+//                bookings = new List<Booking>();
+//            }
 
-            public bool IsRoomAvailable(int roomNumber,DateTime checkIn,DateTime checkOut)
-            {
-                foreach (Booking booking in bookings)
-                {
-                    bool sameRoom = booking.RoomNumber == roomNumber;
+//            public bool IsRoomAvailable(int roomNumber,DateTime checkIn,DateTime checkOut)
+//            {
 
-                    bool datesOverlap = checkIn < booking.CheckOut && checkOut > booking.CheckIn;
+//                foreach (Booking booking in bookings)
+//                {
+//                    bool sameRoom = booking.RoomNumber == roomNumber;
 
-                    if (sameRoom && datesOverlap)
-                    {
-                        return false;
-                    }
-                }
+//                    bool datesOverlap = checkIn < booking.CheckOut && checkOut > booking.CheckIn;
 
-                return true;
-            }
+//                    if (sameRoom && datesOverlap)
+//                    {
+//                        return false;
+//                    }
+//                }
 
-            public bool BookRoom(int roomNumber,DateTime checkIn,DateTime checkOut)
-            {
-                if (checkOut <= checkIn)
-                {
-                    return false;
-                }
+//                return true;
+//            }
 
-                if (!RoomExists(roomNumber))
-                {
-                    return false;
-                }
+//            public bool BookRoom(int roomNumber,DateTime checkIn,DateTime checkOut)
+//            {
+//                if (checkOut <= checkIn)
+//                {
+//                    return false;
+//                }
 
-                if (!IsRoomAvailable(roomNumber,checkIn,checkOut))
-                {
-                    return false;
-                }
+//                if (!RoomExists(roomNumber))
+//                {
+//                    return false;
+//                }
 
-                Booking newBooking = new Booking(roomNumber,checkIn,checkOut);
+//                if (!IsRoomAvailable(roomNumber,checkIn,checkOut))
+//                {
+//                    return false;
+//                }
 
-                bookings.Add(newBooking);
+//                Booking newBooking = new Booking(roomNumber,checkIn,checkOut);
 
-                return true;
-            }
+//                bookings.Add(newBooking);
 
-            public Room[] GetAvailableRooms(DateTime checkIn,DateTime checkOut)
-            {
-                List<Room> availableRooms = new List<Room>();
+//                return true;
+//            }
 
-                foreach (Room room in rooms)
-                {
-                    if (IsRoomAvailable(room.RoomNumber,checkIn,checkOut))
-                    {
-                        availableRooms.Add(room);
-                    }
-                }
+//            public Room[] GetAvailableRooms(DateTime checkIn,DateTime checkOut)
+//            {
+//                List<Room> availableRooms = new List<Room>();
 
-                return availableRooms.ToArray();
-            }
+//                foreach (Room room in rooms)
+//                {
+//                    if (IsRoomAvailable(room.RoomNumber,checkIn,checkOut))
+//                    {
+//                        availableRooms.Add(room);
+//                    }
+//                }
 
-            private bool RoomExists(int roomNumber)
-            {
-                foreach (Room room in rooms)
-                {
-                    if (room.RoomNumber == roomNumber)
-                    {
-                        return true;
-                    }
-                }
+//                return availableRooms.ToArray();
+//            }
 
-                return false;
-            }
-        }
-    }
-}
+//            private bool RoomExists(int roomNumber)
+//            {
+//                foreach (Room room in rooms)
+//                {
+//                    if (room.RoomNumber == roomNumber)
+//                    {
+//                        return true;
+//                    }
+//                }
+
+//                return false;
+//            }
+//        }
+//    }
+//}
