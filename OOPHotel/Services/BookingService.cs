@@ -36,16 +36,13 @@ namespace OOPHotel.Services
                 {
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
-                        greeter.ConfirmBooking(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay);
                         hotelManager.AddBooking(booking);
                         break;
                     case UserBookingActions.UpdateBooking:
                         booking = UpdateBooking();
                         if(booking != null)
-                        {
-                            greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
-                            hotelManager.AddBooking(booking);
-                        }
+                            greeter.ConfirmRebook(booking.Person.Name, booking.StartingDay);
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
@@ -69,7 +66,7 @@ namespace OOPHotel.Services
             int lenghtOfStay = questionnaire.AskForLengthOfStay();
             Person guest = new(name, email, phone);
             int id = generator.GenerateUniqueID();
-            HotelBooking booking = new(guest, bookingDate, lenghtOfStay, id);
+            HotelBooking booking = new(guest, bookingDate, bookingDate.AddDays(lenghtOfStay), id);
             return booking;
         }
 
@@ -85,7 +82,8 @@ namespace OOPHotel.Services
                 DateTime startDate = questionnaire.AskForStartDate();
                 int days = questionnaire.AskForLengthOfStay();
                 DateTime endDate = startDate.AddDays(days);
-                booking.Starting = startDate;
+                booking.StartingDay = startDate;
+                return booking;
             }
             else
             {
