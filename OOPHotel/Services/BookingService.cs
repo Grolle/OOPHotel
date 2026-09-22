@@ -36,17 +36,17 @@ namespace OOPHotel.Services
                 {
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
-                        greeter.ConfirmBooking(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay);
                         manager.AddBooking(booking);
                         break;
                     case UserBookingActions.UpdateBooking:
                         booking = UpdateBooking();
-                        greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmRebook(booking.Person.Name, booking.StartingDay);
                         manager.AddBooking(booking);
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
-                        greeter.ConfirmCancel(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmCancel(booking.Person.Name, booking.StartingDay);
                         break;
                 }
 

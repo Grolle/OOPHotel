@@ -9,18 +9,19 @@ namespace OOPHotel.Controllers
     internal class HotelBooking
     {
         public Person Person { get; set; }
-        public DateTime Starting { get; set; }
-        public int AddedDay { get; set; }
+        public DateTime StartingDay { get; set; }
+
+        public DateTime EndDay { get; set; }
 
         public int IDRoom { get; set; } = -1;
 
         public int BookingID { get; set; } = 0;
 
-       public  HotelBooking(Person person,  DateTime starting, int addedDay, int id)
+       public  HotelBooking(Person person,  DateTime startingDay, DateTime endDay , int id)
         {
             Person = person;
-            Starting = starting;
-            AddedDay = addedDay;
+            StartingDay = startingDay;
+            EndDay = endDay;
             BookingID = id;
         }
 
