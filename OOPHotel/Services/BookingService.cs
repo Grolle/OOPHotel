@@ -17,10 +17,10 @@ namespace OOPHotel.Services
         }
         private Questionnaire questionnaire;
         private UserGreeter greeter;
-        private HotelManager manager;
+        private HotelManager hotelManager;
         private IDGenerator idgenrator;
 
-        public BookingService() { questionnaire = new(); greeter = new(); manager = new(); idgenrator = new(); }
+        public BookingService() { questionnaire = new(); greeter = new(); hotelManager = new(); idgenrator = new(); }
 
 
         public void BookingLoop()
@@ -36,17 +36,16 @@ namespace OOPHotel.Services
                 {
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
-                        greeter.ConfirmBooking(booking.Person.Name, booking.Starting);
-                        manager.AddBooking(booking);
+                        greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay, booking.BookingID);
+                        hotelManager.AddBooking(booking);
                         break;
                     case UserBookingActions.UpdateBooking:
                         booking = UpdateBooking();
-                        greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
-                        manager.AddBooking(booking);
+                        greeter.ConfirmRebook(booking.Person.Name, booking.StartingDay);
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
-                        greeter.ConfirmCancel(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmCancel(booking.Person.Name, booking.StartingDay);
                         break;
                 }
 
@@ -66,7 +65,7 @@ namespace OOPHotel.Services
             int lenghtOfStay = questionnaire.AskForLengthOfStay();
             Person guest = new(name, email, phone);
             int id = idgenrator.GenerateUniqueID();
-            HotelBooking booking = new(guest, bookingDate, lenghtOfStay, id);
+            HotelBooking booking = new(guest, bookingDate, bookingDate.AddDays(lenghtOfStay), id);
             return booking;
         }
 
@@ -77,7 +76,36 @@ namespace OOPHotel.Services
 
         public HotelBooking UpdateBooking()
         {
-            return null;
+            if (TryFindBookingByID(out HotelBooking booking))
+            {
+                DateTime startDate = questionnaire.AskForStartDate();
+                int days = questionnaire.AskForLengthOfStay();
+                DateTime endDate = startDate.AddDays(days);
+                booking.StartingDay = startDate;
+                return booking;
+            }
+            else
+            {
+                Console.WriteLine("Could not retrieve booking, jumping to base options.");
+                return null;
+            }
+        }
+
+        private bool TryFindBookingByID(out HotelBooking booking)
+        {
+            while (true)
+            {
+                int bookingID = questionnaire.GetBookingNumber();
+                booking = hotelManager.GetBookingByID(bookingID);
+
+                if (booking != null)
+                    return true;
+
+                Console.WriteLine("Could not find your booking, please try again.");
+
+                if (questionnaire.GetCancelCurrentAction())
+                    return false;
+            }
         }
 
     }
