@@ -77,13 +77,13 @@ namespace OOPHotel.Services
         public string AskForUserName()
         {
             AskForName();
-            string name = input.GetUserInput<string>(InputHander.InputData.String, ValidateName);
+            string name = input.GetUserInput<string>(InputHander.InputData.String, ValidateName, "Please use only characters.");
             return name;
         }
         public UserBookingActions AskForUserReason()
         {
             AskForReason();
-            string reason = input.GetUserInput<string>(InputHander.InputData.String, UserReason);
+            string reason = input.GetUserInput<string>(InputHander.InputData.String, UserReason,"Please only use 'book' 'rebook' or 'cancel'");
 
             if (reason == "book")
                 return UserBookingActions.Book;
@@ -96,42 +96,56 @@ namespace OOPHotel.Services
         public DateTime AskForStartDate()
         {
             AskForDate();
-            DateTime date = input.GetUserInput<DateTime>(InputHander.InputData.DateTime, DateTimeValid);
+            DateTime date = input.GetUserInput<DateTime>(InputHander.InputData.DateTime, DateTimeValid, "Please add correct formal 'yyyy-mm-dd");
             return date;
         }
 
         public int AskForRoomNumber()
         {
             AskRoomNumber();
-            int number = input.GetUserInput<int>(InputHander.InputData.Int, ValidRoomNumber);
+            int number = input.GetUserInput<int>(InputHander.InputData.Int, ValidRoomNumber, "Please add number between 0-30");
             return number;
         }
 
         public int AskForLengthOfStay()
         {
             AskForLength();
-            int length = input.GetUserInput<int>(InputHander.InputData.Int, StayLengthValid);
+            int length = input.GetUserInput<int>(InputHander.InputData.Int, StayLengthValid, "Add no negative number and maximum of 365 days.");
             return length;
         }
 
         public string GetUserEmail()
         {
             AskForEmail();
-            string email = input.GetUserInput<string>(InputHander.InputData.String, ValidateEmail);
+            string email = input.GetUserInput<string>(InputHander.InputData.String, ValidateEmail,"Please follow correct format 'nnn@nnn.nnn'");
             return email;
         }
         public int GetPhoneNumber()
         {
             AskForPhoneNumber();
-            int nr = input.GetUserInput<int>(InputHander.InputData.Int, ValidatePhoneNr);
+            int nr = input.GetUserInput<int>(InputHander.InputData.Int, ValidatePhoneNr, "Please add a number with minimum length of 8 digits and maximum of 12 digits");
             return nr;
         }
 
         public bool GetBookingComplete()
         {
             AskForBookingComplete();
-            string completeStr = input.GetUserInput<string>(InputHander.InputData.String, ValidYesNo);
+            string completeStr = input.GetUserInput<string>(InputHander.InputData.String, ValidYesNo, "Please use 'yes' or 'no'");
             return completeStr != "yes";
+        }
+
+        public int GetBookingNumber()
+        {
+            AskForBookingNumber();
+            int bookingNumber = input.GetUserInput<int>(InputHander.InputData.Int, (int id)=> id > 0, "Please do not use negative numbers.");
+            return bookingNumber;
+        }
+
+        public bool GetCancelCurrentAction()
+        {
+            AskUserToQuit();
+            string completeStr = input.GetUserInput<string>(InputHander.InputData.String, ValidYesNo, "Please use 'yes' or 'no'");
+            return completeStr == "yes";
         }
 
         #region Questions
@@ -143,6 +157,8 @@ namespace OOPHotel.Services
         private void AskForEmail() => Console.WriteLine("What is your email?");
         private void AskForPhoneNumber() => Console.WriteLine("What is your phone nr?");
         private void AskForBookingComplete() => Console.WriteLine("Do you want to make any changes? (yes/no)");
+        private void AskUserToQuit() => Console.WriteLine("Do you want to cancel current action?");
+        private void AskForBookingNumber() => Console.WriteLine("Please type in your booking number");
         #endregion
     }
 }

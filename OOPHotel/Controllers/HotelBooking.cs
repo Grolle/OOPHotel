@@ -15,13 +15,14 @@ namespace OOPHotel.Controllers
         public int AddedDay { get; set; }
 
         public int IDRoom { get; set; } = -1;
+        public int BookingID { get; set; } = 0;
 
-       public  HotelBooking(Person person,  DateTime starting, DateTime lastday, int addedDay)
+       public  HotelBooking(Person person,  DateTime starting, DateTime lastday, int bookingID)
         {
             Person = person;
             Starting = starting;
             LastDay = lastday;
-            AddedDay = addedDay;
+            BookingID = bookingID;
 
         }
 
