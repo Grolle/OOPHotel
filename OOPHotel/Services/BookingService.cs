@@ -17,8 +17,9 @@ namespace OOPHotel.Services
         }
         private Questionnaire questionnaire;
         private UserGreeter greeter;
+        private HotelManager manager;
 
-        public BookingService() { questionnaire = new(); greeter = new(); }
+        public BookingService() { questionnaire = new(); greeter = new(); manager = new(); }
 
 
         public void BookingLoop()
@@ -35,12 +36,12 @@ namespace OOPHotel.Services
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
                         greeter.ConfirmBooking(booking.Person.Name, booking.Starting);
-
+                        manager.AddBooking(booking);
                         break;
                     case UserBookingActions.UpdateBooking:
                         booking = UpdateBooking();
                         greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
-
+                        manager.AddBooking(booking);
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
