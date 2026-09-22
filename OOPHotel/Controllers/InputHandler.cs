@@ -7,6 +7,8 @@
             String,
             Int,
             Float,
+            DateTime,
+            Bool,
         }
 
 
@@ -25,11 +27,7 @@
                 switch (dataType)
                 {
                     case InputData.String:
-                        if (int.TryParse(input, out int i))//break if it's an int, not acceptable
-                            break;
-                        else if (float.TryParse(input, out float f))//break if float, not acceptable
-                            break;
-
+                        
                         success = !string.IsNullOrEmpty(input);
 
                         if (success)
@@ -45,12 +43,22 @@
                         if (success)
                             parsedGeneric = (T)(object)inputFloat;
                         break;
+                    case InputData.DateTime:
+
+                        if(input is string)
+                        {
+                            success = DateTime.TryParse(input, out DateTime date);
+
+                            if (success)
+                                parsedGeneric = (T)(object)date;
+                        }                        
+                        break;
                 }
 
                 if (success && validator(parsedGeneric))
                     return parsedGeneric;
 
-                Console.WriteLine("Det gick ej att tolka ditt svar, var god försök igen.");
+                Console.WriteLine("Your response could not be interpreted; please try again.");
             }
         }
     }
