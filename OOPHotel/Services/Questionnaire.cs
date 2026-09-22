@@ -72,6 +72,8 @@ namespace OOPHotel.Services
             else return false;
         }
         #endregion
+
+
         public string AskForUserName()
         {
             AskForName();
@@ -135,7 +137,7 @@ namespace OOPHotel.Services
         #region Questions
         private void AskForReason() => Console.WriteLine("Do you want to book a new room, or cancel or rebook a room? (book/cancel/rebook)");
         private void AskForName() => Console.WriteLine("What is your name?");
-        private void AskForDate() => Console.WriteLine("What date do you want to book");
+        private void AskForDate() => Console.WriteLine("What date do you want to book (yyyy-mm-dd)");
         private void AskForLength() => Console.WriteLine("How long is your stay in days?");
         private void AskRoomNumber() => Console.WriteLine("What is your room nr?");
         private void AskForEmail() => Console.WriteLine("What is your email?");
