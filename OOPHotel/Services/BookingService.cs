@@ -24,35 +24,38 @@ namespace OOPHotel.Services
         public void BookingLoop()
         {
             greeter.GreetUser();
+            HotelBooking booking;
+            bool complete;
 
             while (true)
             {
                 UserBookingActions action = questionnaire.AskForUserReason();
-
-                switch(action)
+                switch (action)
                 {
                     case UserBookingActions.Book:
-                        OpenNewBooking();
+                        booking = OpenNewBooking();
+                        greeter.ConfirmBooking(booking.Person.Name, booking.Starting);
+
                         break;
                     case UserBookingActions.UpdateBooking:
-                        UpdateBooking();
+                        booking = UpdateBooking();
+                        greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
+
                         break;
                     case UserBookingActions.Cancel:
-                        CancelBooking();
+                        booking = CancelBooking();
+                        greeter.ConfirmCancel(booking.Person.Name, booking.Starting);
                         break;
                 }
 
-                bool complete = questionnaire.GetBookingComplete();
+                complete = questionnaire.GetBookingComplete();
 
-                if(complete)
-                {
-                    greeter.ConfirmBooking();
+                if (complete)
                     break;
-                }
             }
         }
 
-        public void OpenNewBooking()
+        public HotelBooking OpenNewBooking()
         {
             string name = questionnaire.AskForUserName();
             string email = questionnaire.GetUserEmail();
@@ -61,17 +64,17 @@ namespace OOPHotel.Services
             int lenghtOfStay = questionnaire.AskForLengthOfStay();
             Person guest = new(name, email, phone);
             HotelBooking booking = new(guest, bookingDate, lenghtOfStay);
-            greeter.ConfirmBooking();
+            return booking;
         }
 
-        public void CancelBooking()
+        public HotelBooking CancelBooking()
         {
-            
+            return null;   
         }
 
-        public void UpdateBooking()
+        public HotelBooking UpdateBooking()
         {
-
+            return null;
         }
 
     }
