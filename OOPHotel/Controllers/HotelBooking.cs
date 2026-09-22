@@ -1,4 +1,5 @@
 ﻿using Akutmottagningen.Questions;
+using OOPHotel.Containers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +8,13 @@ namespace OOPHotel.Controllers
 {
     internal class HotelBooking
     {
-        string Name { get; set; }
+        Person Person { get; set; }
         DateTime Starting { get; set; }
         int AddedDay { get; set; }
 
-       public  HotelBooking(string name,  DateTime starting, int addedDay)
+       public  HotelBooking(Person person,  DateTime starting, int addedDay)
         {
-            Name = name;
+            Person = person;
             Starting = starting;
             AddedDay = addedDay;
         }
