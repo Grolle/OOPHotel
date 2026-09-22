@@ -12,6 +12,8 @@ namespace OOPHotel.Controllers
         DateTime Starting { get; set; }
         int AddedDay { get; set; }
 
+        int IDRoom { get; set; } = -1;
+
        public  HotelBooking(Person person,  DateTime starting, int addedDay)
         {
             Person = person;
