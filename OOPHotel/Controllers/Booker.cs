@@ -6,5 +6,6 @@ namespace OOPHotel.Controllers
 {
     internal class Booker
     {
+
     }
 }
