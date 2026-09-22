@@ -41,7 +41,7 @@ namespace OOPHotel.Controllers
             return -1;
         }
 
-        public HotelBooking GetBookingByID(int id) => HotelBookingList.FirstOrDefault(x=>x.IDRoom == id);
+        public HotelBooking GetBookingByID(int id) => HotelBookingList.FirstOrDefault(x=>x.BookingID == id);
 
     }
 }

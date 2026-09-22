@@ -36,7 +36,7 @@ namespace OOPHotel.Services
                 {
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
-                        greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay);
+                        greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay, booking.BookingID);
                         hotelManager.AddBooking(booking);
                         break;
                     case UserBookingActions.UpdateBooking:
