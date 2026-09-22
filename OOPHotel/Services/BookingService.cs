@@ -24,6 +24,7 @@ namespace OOPHotel.Services
         public void BookingLoop()
         {
             greeter.GreetUser();
+
             while (true)
             {
                 UserBookingActions action = questionnarie.AskForUserReason();

@@ -133,7 +133,6 @@ namespace OOPHotel.Services
         }
 
         #region Questions
-        private void GreetUser() => Console.WriteLine("Hello and welcome to OOP Hotel");
         private void AskForReason() => Console.WriteLine("Do you want to book a new room, or cancel or rebook a room? (book/cancel/rebook)");
         private void AskForName() => Console.WriteLine("What is your name?");
         private void AskForDate() => Console.WriteLine("What date do you want to book");
