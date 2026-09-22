@@ -7,6 +7,7 @@
             String,
             Int,
             Float,
+            DateTime,
         }
 
 
@@ -25,11 +26,7 @@
                 switch (dataType)
                 {
                     case InputData.String:
-                        if (int.TryParse(input, out int i))//break if it's an int, not acceptable
-                            break;
-                        else if (float.TryParse(input, out float f))//break if float, not acceptable
-                            break;
-
+                        
                         success = !string.IsNullOrEmpty(input);
 
                         if (success)
@@ -44,6 +41,15 @@
                         success = float.TryParse(input, out float inputFloat);
                         if (success)
                             parsedGeneric = (T)(object)inputFloat;
+                        break;
+                    case InputData.DateTime:
+                        if(input is string)
+                        {
+                            if(DateTime.TryParse(input, out DateTime date))
+                            {
+                                parsedGeneric = (T)(object)date;
+                            }
+                        }
                         break;
                 }
 
