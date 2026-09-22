@@ -36,16 +36,16 @@ namespace OOPHotel.Services
                 {
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
-                        greeter.ConfirmBooking(booking.Person.Name, booking.Starting, booking.BookingID);
+                        greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay, booking.BookingID);
                         hotelManager.AddBooking(booking);
                         break;
                     case UserBookingActions.UpdateBooking:
                         booking = UpdateBooking();
-                        greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmRebook(booking.Person.Name, booking.StartingDay);
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
-                        greeter.ConfirmCancel(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmCancel(booking.Person.Name, booking.StartingDay);
                         break;
                 }
 
@@ -81,7 +81,7 @@ namespace OOPHotel.Services
                 DateTime startDate = questionnaire.AskForStartDate();
                 int days = questionnaire.AskForLengthOfStay();
                 DateTime endDate = startDate.AddDays(days);
-                booking.Starting = startDate;
+                booking.StartingDay = startDate;
                 return booking;
             }
             else
