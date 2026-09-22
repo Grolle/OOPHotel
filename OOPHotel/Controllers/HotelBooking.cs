@@ -8,9 +8,9 @@ namespace OOPHotel.Controllers
 {
     internal class HotelBooking
     {
-        Person Person { get; set; }
-        DateTime Starting { get; set; }
-        int AddedDay { get; set; }
+        public Person Person { get; set; }
+        public DateTime Starting { get; set; }
+        public int AddedDay { get; set; }
 
         int IDRoom { get; set; } = -1;
 
