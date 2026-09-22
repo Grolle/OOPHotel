@@ -15,10 +15,10 @@ namespace OOPHotel.Services
             Cancel,
             UpdateBooking
         }
-        private Questionnaire questionnarie;
+        private Questionnaire questionnaire;
         private UserGreeter greeter;
 
-        public BookingService() { questionnarie = new(); greeter = new(); }
+        public BookingService() { questionnaire = new(); greeter = new(); }
 
 
         public void BookingLoop()
@@ -27,7 +27,7 @@ namespace OOPHotel.Services
 
             while (true)
             {
-                UserBookingActions action = questionnarie.AskForUserReason();
+                UserBookingActions action = questionnaire.AskForUserReason();
 
                 switch(action)
                 {
@@ -42,7 +42,7 @@ namespace OOPHotel.Services
                         break;
                 }
 
-                bool complete = questionnarie.GetBookingComplete();
+                bool complete = questionnaire.GetBookingComplete();
 
                 if(complete)
                 {
@@ -54,11 +54,11 @@ namespace OOPHotel.Services
 
         public void OpenNewBooking()
         {
-            string name = questionnarie.AskForUserName();
-            string email = questionnarie.GetUserEmail();
-            int phone = questionnarie.GetPhoneNumber();
-            DateTime bookingDate = questionnarie.AskForStartDate();
-            int lenghtOfStay = questionnarie.AskForLengthOfStay();
+            string name = questionnaire.AskForUserName();
+            string email = questionnaire.GetUserEmail();
+            int phone = questionnaire.GetPhoneNumber();
+            DateTime bookingDate = questionnaire.AskForStartDate();
+            int lenghtOfStay = questionnaire.AskForLengthOfStay();
             Person guest = new(name, email, phone);
             HotelBooking booking = new(guest, bookingDate, lenghtOfStay);
             greeter.ConfirmBooking();
