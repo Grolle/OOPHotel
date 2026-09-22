@@ -6,19 +6,23 @@ using System.Text;
 
 namespace OOPHotel.Controllers
 {
-    internal class HotelBooking
+    public class HotelBooking
     {
         public Person Person { get; set; }
         public DateTime Starting { get; set; }
+
+        public DateTime LastDay { get; set; }
         public int AddedDay { get; set; }
 
         public int IDRoom { get; set; } = -1;
 
-       public  HotelBooking(Person person,  DateTime starting, int addedDay)
+       public  HotelBooking(Person person,  DateTime starting, DateTime lastday, int addedDay)
         {
             Person = person;
             Starting = starting;
+            LastDay = lastday;
             AddedDay = addedDay;
+
         }
 
     }
