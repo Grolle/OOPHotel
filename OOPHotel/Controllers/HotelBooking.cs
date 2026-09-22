@@ -17,6 +17,8 @@ namespace OOPHotel.Controllers
 
         public int BookingID { get; set; } = 0;
 
+        //New Version
+
        public  HotelBooking(Person person,  DateTime startingDay, DateTime endDay , int id)
         {
             Person = person;
