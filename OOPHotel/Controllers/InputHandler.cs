@@ -12,7 +12,7 @@
         }
 
 
-        public T GetUserInput<T>(InputData dataType, Func<T, bool> validator)
+        public T GetUserInput<T>(InputData dataType, Func<T, bool> validator, string errorMessage)
         {
             string input = "";
             string inputLC;
@@ -58,7 +58,7 @@
                 if (success && validator(parsedGeneric))
                     return parsedGeneric;
 
-                Console.WriteLine("Your response could not be interpreted; please try again.");
+                Console.WriteLine(errorMessage);
             }
         }
     }

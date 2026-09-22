@@ -17,9 +17,9 @@ namespace OOPHotel.Services
         }
         private Questionnaire questionnaire;
         private UserGreeter greeter;
-        private HotelManager manager;
+        private HotelManager hotelManager;
 
-        public BookingService() { questionnaire = new(); greeter = new(); manager = new(); }
+        public BookingService() { questionnaire = new(); greeter = new(); hotelManager = new(); }
 
 
         public void BookingLoop()
@@ -36,12 +36,15 @@ namespace OOPHotel.Services
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
                         greeter.ConfirmBooking(booking.Person.Name, booking.Starting);
-                        manager.AddBooking(booking);
+                        hotelManager.AddBooking(booking);
                         break;
                     case UserBookingActions.UpdateBooking:
                         booking = UpdateBooking();
-                        greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
-                        manager.AddBooking(booking);
+                        if(booking != null)
+                        {
+                            greeter.ConfirmRebook(booking.Person.Name, booking.Starting);
+                            hotelManager.AddBooking(booking);
+                        }
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
@@ -75,8 +78,35 @@ namespace OOPHotel.Services
 
         public HotelBooking UpdateBooking()
         {
-            return null;
+            if(TryFindBookingByID(out HotelBooking booking))
+            {
+                DateTime startDate = questionnaire.AskForStartDate();
+                int days = questionnaire.AskForLengthOfStay();
+                DateTime endDate = startDate.AddDays(days);
+
+            }
+            else
+            {
+                Console.WriteLine("Could not retrieve booking, jumping to base options.");
+                return null;
+            }
         }
 
+        private bool TryFindBookingByID( out HotelBooking booking)
+        {
+            while(true)
+            {
+                int bookingID = questionnaire.GetBookingNumber();
+                booking = hotelManager.GetBookingByID(bookingID);
+
+                if (booking != null)
+                    return true;
+
+                Console.WriteLine("Could not find your booking, please try again.");
+
+                if (questionnaire.GetCancelCurrentAction())
+                    return false;
+            }
+        }
     }
 }
