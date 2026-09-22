@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+OOPHotel/obj/Debug/net10.0/OOPHotel.AssemblyInfo.cs
+OOPHotel/obj/Debug/net10.0/OOPHotel.AssemblyInfoInputs.cache
+OOPHotel/obj/Debug/net10.0/OOPHotel.GeneratedMSBuildEditorConfig.editorconfig

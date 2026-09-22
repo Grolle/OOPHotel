@@ -7,28 +7,32 @@
       "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:services\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\services\\usergreeter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:services\\usergreeter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\services\\questionnaire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:services\\questionnaire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\controllers\\hotelbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:controllers\\hotelbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\controllers\\booker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:controllers\\booker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\controllers\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:controllers\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\presentation\\guestpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:presentation\\guestpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\controllers\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:controllers\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\services\\usergreeter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:services\\usergreeter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\controllers\\hotelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:controllers\\hotelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\services\\questionnaire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:services\\questionnaire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\controllers\\booker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:controllers\\booker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\controllers\\hotelbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|solutionrelative:controllers\\hotelbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0566EEB4-703E-4029-BD48-7C93540E30ED}|OOPHotel.csproj|c:\\users\\alexg\\documents\\school\\oophotel\\oophotel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,11 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "HotelManager.cs",
+              "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Controllers\\HotelManager.cs",
+              "RelativeDocumentMoniker": "Controllers\\HotelManager.cs",
+              "ToolTip": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Controllers\\HotelManager.cs",
+              "RelativeToolTip": "Controllers\\HotelManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-22T11:27:32.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UserGreeter.cs",
               "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Services\\UserGreeter.cs",
               "RelativeDocumentMoniker": "Services\\UserGreeter.cs",
@@ -59,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "GuestPresenter.cs",
               "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Presentation\\GuestPresenter.cs",
               "RelativeDocumentMoniker": "Presentation\\GuestPresenter.cs",
@@ -78,14 +95,14 @@
               "RelativeDocumentMoniker": "Services\\BookingService.cs",
               "ToolTip": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Services\\BookingService.cs",
               "RelativeToolTip": "Services\\BookingService.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAswDUAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA3wDMAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-22T09:14:26.981Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Booker.cs",
               "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Controllers\\Booker.cs",
               "RelativeDocumentMoniker": "Controllers\\Booker.cs",
@@ -98,33 +115,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Questionnaire.cs",
               "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Services\\Questionnaire.cs",
               "RelativeDocumentMoniker": "Services\\Questionnaire.cs",
               "ToolTip": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Services\\Questionnaire.cs",
               "RelativeToolTip": "Services\\Questionnaire.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAIwIEAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-22T08:37:48.86Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "InputHandler.cs",
               "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Controllers\\InputHandler.cs",
               "RelativeDocumentMoniker": "Controllers\\InputHandler.cs",
               "ToolTip": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Controllers\\InputHandler.cs",
               "RelativeToolTip": "Controllers\\InputHandler.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA7wDwAAABcAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAwwDUAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-22T08:17:32.577Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "HotelBooking.cs",
               "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Controllers\\HotelBooking.cs",
               "RelativeDocumentMoniker": "Controllers\\HotelBooking.cs",
@@ -137,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\alexg\\Documents\\school\\OOPHotel\\OOPHotel\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
