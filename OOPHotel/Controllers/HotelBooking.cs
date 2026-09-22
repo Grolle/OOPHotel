@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OOPHotel.Controllers
 {
-    internal class HotelBooking
+    public class HotelBooking
     {
         public Person Person { get; set; }
         public DateTime StartingDay { get; set; }

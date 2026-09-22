@@ -11,19 +11,35 @@ namespace OOPHotel.Controllers
     {
 
         List<HotelBooking> HotelBookingList = new List<HotelBooking>();
-        //RoomManager[] rums = new RoomManager[40];
+        Room[] Rooms = new Room[40];
 
-        public HotelManager() { }
+        public HotelManager()
+        {
+            for (int i = 0; i < Rooms.Count(); i++)
+            {
+                Rooms[i].IDRoom = i + 1;
+            }
+
+        }
 
         public void AddBooking(HotelBooking hotelBooking)
         {
             HotelBookingList.Add(hotelBooking);
         }
 
-        public bool IsDateAvailable(DateTime startDate, DateTime dateTime)
+        public bool IsDateAvailable(DateTime startDate, DateTime endDate)
         {
+            for (int i = 0; i < Rooms.Count(); i++)
+            {
+                Person person = new Person("test", "Email", 943423);
+                HotelBooking hotelBooking = new HotelBooking(person, startDate, endDate, 54);
+                if (Rooms[i].IsRoomAvailabel(hotelBooking))
+                {
+                    return true;
 
-            return true;
+                }
+            }
+            return false;
         }
 
         public HotelBooking FindBooking(int bookingID) => HotelBookingList.FirstOrDefault(x => x.BookingID == bookingID);
