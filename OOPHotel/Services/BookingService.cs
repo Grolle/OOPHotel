@@ -49,7 +49,7 @@ namespace OOPHotel.Services
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
-                        greeter.ConfirmCancel(booking.Person.Name, booking.Starting);
+                        greeter.ConfirmCancel(booking.Person.Name, booking.StartingDay);
                         break;
                 }
 
