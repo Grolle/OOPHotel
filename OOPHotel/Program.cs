@@ -1,10 +1,14 @@
-﻿namespace OOPHotel
+﻿using OOPHotel.Services;
+
+namespace OOPHotel
 {
     internal class Program
     {
+       
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            BookingService bookingService = new();
+            bookingService.BookingLoop();
         }
     }
 }

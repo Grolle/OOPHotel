@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using static OOPHotel.Services.BookingService;
 
-namespace OOPHotel.Controllers
+namespace OOPHotel.Services
 {
     internal class Questionnaire
     {
@@ -15,19 +16,24 @@ namespace OOPHotel.Controllers
         private bool DateTimeValid(DateTime date)
         {
             TimeSpan timeSpan = date - DateTime.Now;
-            if (timeSpan.Days > 365) return false;
+            if (timeSpan.Days < 0) return false;
+            else if (timeSpan.Days > 365) return false;
             else return true;
         }
         private bool UserReason(string reason)
         {
             string reasonTL = reason.ToLower();
-            return (reasonTL == "omboka" || reasonTL == "avboka" || reasonTL == "boka");
+            return (reasonTL == "rebook" || reasonTL == "cancel" || reasonTL == "book");
         }
         private bool ValidRoomNumber(int nr)
         {
             return (nr >= 0 && nr <= 30);
         }
-        private bool ValidatePhoneNr(int nr) => nr >= 8 && nr <= 12;
+        private bool ValidatePhoneNr(int nr)
+        {
+            int len = nr.ToString().Length;
+            return len >= 8 && len <= 12;
+        }
         private bool ValidateEmail(string email)
         {
             var trimmedEmail = email.Trim();
@@ -59,6 +65,12 @@ namespace OOPHotel.Controllers
         {
             return (length > 0 && length <= 365);
         }
+        private bool ValidYesNo(string str)
+        {
+            string strTL = str.ToLower();
+            if (strTL == "yes" || strTL == "no") return true;
+            else return false;
+        }
         #endregion
         public string AskForUserName()
         {
@@ -66,11 +78,17 @@ namespace OOPHotel.Controllers
             string name = input.GetUserInput<string>(InputHander.InputData.String, ValidateName);
             return name;
         }
-        public string AskForUserReason()
+        public UserBookingActions AskForUserReason()
         {
             AskForReason();
             string reason = input.GetUserInput<string>(InputHander.InputData.String, UserReason);
-            return reason;
+
+            if (reason == "book")
+                return UserBookingActions.Book;
+            else if (reason == "rebook")
+                return UserBookingActions.UpdateBooking;
+            else
+                return UserBookingActions.Cancel;
         }
 
         public DateTime AskForStartDate()
@@ -107,15 +125,23 @@ namespace OOPHotel.Controllers
             return nr;
         }
 
+        public bool GetBookingComplete()
+        {
+            AskForBookingComplete();
+            string completeStr = input.GetUserInput<string>(InputHander.InputData.String, ValidYesNo);
+            return completeStr != "yes";
+        }
+
         #region Questions
         private void GreetUser() => Console.WriteLine("Hello and welcome to OOP Hotel");
-        private void AskForReason() => Console.WriteLine("Vill du boka ett nytt rum eller avboka/omboka rum.");
+        private void AskForReason() => Console.WriteLine("Do you want to book a new room, or cancel or rebook a room? (book/cancel/rebook)");
         private void AskForName() => Console.WriteLine("What is your name?");
         private void AskForDate() => Console.WriteLine("What date do you want to book");
         private void AskForLength() => Console.WriteLine("How long is your stay in days?");
         private void AskRoomNumber() => Console.WriteLine("What is your room nr?");
         private void AskForEmail() => Console.WriteLine("What is your email?");
-        public void AskForPhoneNumber() => Console.WriteLine("What is your phone nr?");
+        private void AskForPhoneNumber() => Console.WriteLine("What is your phone nr?");
+        private void AskForBookingComplete() => Console.WriteLine("Do you want to make any changes? (yes/no)");
         #endregion
     }
 }

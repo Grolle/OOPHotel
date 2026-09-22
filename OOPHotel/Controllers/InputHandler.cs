@@ -8,6 +8,7 @@
             Int,
             Float,
             DateTime,
+            Bool,
         }
 
 
@@ -43,20 +44,21 @@
                             parsedGeneric = (T)(object)inputFloat;
                         break;
                     case InputData.DateTime:
+
                         if(input is string)
                         {
-                            if(DateTime.TryParse(input, out DateTime date))
-                            {
+                            success = DateTime.TryParse(input, out DateTime date);
+
+                            if (success)
                                 parsedGeneric = (T)(object)date;
-                            }
-                        }
+                        }                        
                         break;
                 }
 
                 if (success && validator(parsedGeneric))
                     return parsedGeneric;
 
-                Console.WriteLine("Det gick ej att tolka ditt svar, var god försök igen.");
+                Console.WriteLine("Your response could not be interpreted; please try again.");
             }
         }
     }
