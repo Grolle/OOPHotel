@@ -18,8 +18,9 @@ namespace OOPHotel.Services
         private Questionnaire questionnaire;
         private UserGreeter greeter;
         private HotelManager manager;
+        private IDGenerator idgenrator;
 
-        public BookingService() { questionnaire = new(); greeter = new(); manager = new(); }
+        public BookingService() { questionnaire = new(); greeter = new(); manager = new(); idgenrator = new(); }
 
 
         public void BookingLoop()
@@ -64,7 +65,8 @@ namespace OOPHotel.Services
             DateTime bookingDate = questionnaire.AskForStartDate();
             int lenghtOfStay = questionnaire.AskForLengthOfStay();
             Person guest = new(name, email, phone);
-            HotelBooking booking = new(guest, bookingDate, lenghtOfStay);
+            int id = idgenrator.GenerateUniqueID();
+            HotelBooking booking = new(guest, bookingDate, lenghtOfStay, id);
             return booking;
         }
 

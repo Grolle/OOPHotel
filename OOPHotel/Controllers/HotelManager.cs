@@ -1,5 +1,6 @@
 ﻿using Akutmottagningen.Questions;
 using OOPHotel.Containers;
+using OOPHotel.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,7 @@ namespace OOPHotel.Controllers
         List<HotelBooking> HotelBookingList = new List<HotelBooking>();
         InputHander[] rums = new InputHander[40];
 
+        public HotelManager() {  }
 
        public void AddBooking(HotelBooking hotelBooking)
         {
@@ -40,6 +42,9 @@ namespace OOPHotel.Controllers
 
             return -1;
         }
+
+        public HotelBooking FindBooking(int bookingID) => HotelBookingList.FirstOrDefault(x => x.BookingID == bookingID);
+   
 
 
 

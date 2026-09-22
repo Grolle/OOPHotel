@@ -14,11 +14,14 @@ namespace OOPHotel.Controllers
 
         public int IDRoom { get; set; } = -1;
 
-       public  HotelBooking(Person person,  DateTime starting, int addedDay)
+        public int BookingID { get; set; } = 0;
+
+       public  HotelBooking(Person person,  DateTime starting, int addedDay, int id)
         {
             Person = person;
             Starting = starting;
             AddedDay = addedDay;
+            BookingID = id;
         }
 
     }
