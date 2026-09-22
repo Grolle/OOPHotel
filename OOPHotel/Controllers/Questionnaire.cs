@@ -27,6 +27,25 @@ namespace OOPHotel.Controllers
         {
             return (nr >= 0 && nr <= 30);
         }
+        private bool ValidatePhoneNr(int nr) => nr >= 8 && nr <= 12;
+        private bool ValidateEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private bool ValidateName(string name)
         {
             if (int.TryParse(name, out int i))//name cannot be int
@@ -68,11 +87,24 @@ namespace OOPHotel.Controllers
             return number;
         }
 
-        public int AskForStayLength()
+        public int AskForLengthOfStay()
         {
             AskForLength();
             int length = input.GetUserInput<int>(InputHander.InputData.Int, StayLengthValid);
             return length;
+        }
+
+        public string GetUserEmail()
+        {
+            AskForEmail();
+            string email = input.GetUserInput<string>(InputHander.InputData.String, ValidateEmail);
+            return email;
+        }
+        public int GetPhoneNumber()
+        {
+            AskForPhoneNumber();
+            int nr = input.GetUserInput<int>(InputHander.InputData.Int, ValidatePhoneNr);
+            return nr;
         }
 
         #region Questions
@@ -82,6 +114,8 @@ namespace OOPHotel.Controllers
         private void AskForDate() => Console.WriteLine("What date do you want to book");
         private void AskForLength() => Console.WriteLine("How long is your stay in days?");
         private void AskRoomNumber() => Console.WriteLine("What is your room nr?");
+        private void AskForEmail() => Console.WriteLine("What is your email?");
+        public void AskForPhoneNumber() => Console.WriteLine("What is your phone nr?");
         #endregion
     }
 }
