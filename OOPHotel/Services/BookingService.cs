@@ -1,5 +1,6 @@
 ﻿using OOPHotel.Containers;
 using OOPHotel.Controllers;
+using OOPHotel.Presentation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,7 @@ namespace OOPHotel.Services
         private HotelManager hotelManager;
         private IDGenerator idgenrator;
 
-        public BookingService() { questionnaire = new(); greeter = new(); hotelManager = new(); idgenrator = new(); }
+        public BookingService() { questionnaire = new(); greeter = new(); hotelManager = new(); idgenrator = new();}
 
 
         public void BookingLoop()
@@ -36,6 +37,7 @@ namespace OOPHotel.Services
                 {
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
+                        greeter.GuestPresenter(booking.Person);
                         greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay, booking.BookingID);
                         hotelManager.AddBooking(booking);
                         break;
@@ -96,7 +98,7 @@ namespace OOPHotel.Services
             while (true)
             {
                 int bookingID = questionnaire.GetBookingNumber();
-                booking = hotelManager.GetBookingByID(bookingID);
+                booking = hotelManager.FindBooking(bookingID);
 
                 if (booking != null)
                     return true;

@@ -24,15 +24,15 @@ namespace OOPHotel.Controllers
             if (hasBooking == false)
             {
                 person = hotelBooking.Person;
-                CheckIn = hotelBooking.Starting;
-                CheckOut = hotelBooking.LastDay;
+                CheckIn = hotelBooking.StartingDay;
+                CheckOut = hotelBooking.EndDay;
 
                 hasBooking = true;
 
                 return true;
             }
 
-            bool datesOverlap = hotelBooking.Starting < CheckOut && hotelBooking.LastDay > CheckIn;
+            bool datesOverlap = hotelBooking.StartingDay < CheckOut && hotelBooking.EndDay > CheckIn;
 
             if (datesOverlap)
             {
@@ -40,8 +40,8 @@ namespace OOPHotel.Controllers
             }
 
             person = hotelBooking.Person;
-            CheckIn = hotelBooking.Starting;
-            CheckOut = hotelBooking.LastDay;
+            CheckIn = hotelBooking.StartingDay;
+            CheckOut = hotelBooking.EndDay;
 
             return true;
 

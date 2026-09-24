@@ -17,6 +17,7 @@ namespace OOPHotel.Controllers
         {
             for (int i = 0; i < Rooms.Count(); i++)
             {
+                Rooms[i] = new();
                 Rooms[i].IDRoom = i + 1;
             }
 
