@@ -71,6 +71,12 @@ namespace OOPHotel.Services
             if (strTL == "yes" || strTL == "no") return true;
             else return false;
         }
+        private bool ValidateNewDateAnswer(string str)
+        {
+            string strTL = str.ToLower();
+            if (strTL == "cancel" || strTL == "continue") return true;
+            else return false;
+        }
         #endregion
 
 
@@ -84,6 +90,8 @@ namespace OOPHotel.Services
         {
             AskForReason();
             string reason = input.GetUserInput<string>(InputHander.InputData.String, UserReason,"Please only use 'book' 'rebook' or 'cancel'");
+
+            reason = reason.ToLower();
 
             if (reason == "book")
                 return UserBookingActions.Book;
@@ -120,6 +128,7 @@ namespace OOPHotel.Services
             string email = input.GetUserInput<string>(InputHander.InputData.String, ValidateEmail,"Please follow correct format 'nnn@nnn.nnn'");
             return email;
         }
+
         public int GetPhoneNumber()
         {
             AskForPhoneNumber();
@@ -148,6 +157,14 @@ namespace OOPHotel.Services
             return completeStr == "yes";
         }
 
+        public bool GetUserContinueOrCancel()
+        {
+            AskForUserActionNewDate();
+            string userAnswer = input.GetUserInput<string>(InputHander.InputData.String, ValidateNewDateAnswer, "Please use 'continue' or 'cancel'");
+            string answerTL = userAnswer.ToLower();
+            return answerTL == "continue";
+        }
+
         #region Questions
         private void AskForReason() => Console.WriteLine("Do you want to book a new room, or cancel or rebook a room? (book/cancel/rebook)");
         private void AskForName() => Console.WriteLine("What is your name?");
@@ -159,6 +176,7 @@ namespace OOPHotel.Services
         private void AskForBookingComplete() => Console.WriteLine("Do you want to make any changes? (yes/no)");
         private void AskUserToQuit() => Console.WriteLine("Do you want to cancel current action?");
         private void AskForBookingNumber() => Console.WriteLine("Please type in your booking number");
+        private void AskForUserActionNewDate() => Console.WriteLine("Date not available. Do you want to check another date, or cancel booking? ('continue'/'cancel'");
         #endregion
     }
 }

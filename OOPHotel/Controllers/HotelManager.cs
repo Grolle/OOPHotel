@@ -28,6 +28,14 @@ namespace OOPHotel.Controllers
             HotelBookingList.Add(hotelBooking);
         }
 
+        public void CancelBooking(HotelBooking hotelBooking)
+        {
+            if (HotelBookingList.Contains(hotelBooking))
+                HotelBookingList.Remove(hotelBooking);
+
+            //not sure if we clear room data as well?
+        }
+
         public bool IsDateAvailable(DateTime startDate, DateTime endDate)
         {
             for (int i = 0; i < Rooms.Count(); i++)

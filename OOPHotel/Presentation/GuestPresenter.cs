@@ -16,8 +16,6 @@ namespace OOPHotel.Presentation
             Console.WriteLine($"Email:{person.Email} ");//email
             Console.WriteLine($"phone number: {person. Phone}");// phonenumber
 
-
-
         }
 
 

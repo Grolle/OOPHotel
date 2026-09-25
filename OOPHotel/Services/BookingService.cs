@@ -10,6 +10,11 @@ namespace OOPHotel.Services
     internal class BookingService
     {
 
+        private struct DateData
+        {
+            public DateTime Start { get; set; }
+            public DateTime End { get; set; }
+        }
         public enum UserBookingActions
         {
             Book,
@@ -37,17 +42,22 @@ namespace OOPHotel.Services
                 {
                     case UserBookingActions.Book:
                         booking = OpenNewBooking();
-                        greeter.GuestPresenter(booking.Person);
-                        greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay, booking.BookingID);
-                        hotelManager.AddBooking(booking);
+                        if(booking != null)
+                        {
+                            greeter.UserPresenter(booking.Person);
+                            greeter.ConfirmBooking(booking.Person.Name, booking.StartingDay, booking.BookingID);
+                            hotelManager.AddBooking(booking);
+                        }
                         break;
                     case UserBookingActions.UpdateBooking:
                         booking = UpdateBooking();
-                        greeter.ConfirmRebook(booking.Person.Name, booking.StartingDay);
+                        if(booking != null)
+                            greeter.ConfirmRebook(booking.Person.Name, booking.StartingDay);
                         break;
                     case UserBookingActions.Cancel:
                         booking = CancelBooking();
-                        greeter.ConfirmCancel(booking.Person.Name, booking.StartingDay);
+                        if(booking != null)
+                            greeter.ConfirmCancel(booking.Person.Name, booking.StartingDay);
                         break;
                 }
 
@@ -58,38 +68,76 @@ namespace OOPHotel.Services
             }
         }
 
-        public HotelBooking OpenNewBooking()
+        private HotelBooking OpenNewBooking()
         {
-            string name = questionnaire.AskForUserName();
-            string email = questionnaire.GetUserEmail();
-            int phone = questionnaire.GetPhoneNumber();
-            DateTime bookingDate = questionnaire.AskForStartDate();
-            int lenghtOfStay = questionnaire.AskForLengthOfStay();
-            Person guest = new(name, email, phone);
-            int id = idgenrator.GenerateUniqueID();
-            HotelBooking booking = new(guest, bookingDate, bookingDate.AddDays(lenghtOfStay), id);
-            return booking;
+            if (TryGetBookingDate(out DateData dates))
+            {
+                string name = questionnaire.AskForUserName();
+                string email = questionnaire.GetUserEmail();
+                int phone = questionnaire.GetPhoneNumber();
+                Person guest = new(name, email, phone);
+                int id = idgenrator.GenerateUniqueID();
+                HotelBooking booking = new(guest, dates.Start, dates.End, id);
+                return booking;
+            }
+            else
+                return null;
+
         }
 
-        public HotelBooking CancelBooking()
-        {
-            return null;   
-        }
-
-        public HotelBooking UpdateBooking()
+        private HotelBooking CancelBooking()
         {
             if (TryFindBookingByID(out HotelBooking booking))
+            {
+                hotelManager.CancelBooking(booking);
+                return booking;
+            }
+            else
+                return null;
+        }
+
+        private HotelBooking UpdateBooking()
+        {
+            if (TryFindBookingByID(out HotelBooking booking))
+            {
+                if(TryGetBookingDate(out DateData dates))
+                {
+                    booking.StartingDay = dates.Start;
+                    booking.EndDay = dates.End;
+                    return booking;
+                }
+                else
+                {
+                    Console.WriteLine("Rebooking cancelled, returning to base options.");
+                    return null;
+                }
+            }else
+            {
+
+                Console.WriteLine("Could not retrieve booking, jumping to base options.");
+                return null;
+            }
+        }
+
+        private bool TryGetBookingDate(out DateData data)
+        {
+            data = new();
+            while(true)
             {
                 DateTime startDate = questionnaire.AskForStartDate();
                 int days = questionnaire.AskForLengthOfStay();
                 DateTime endDate = startDate.AddDays(days);
-                booking.StartingDay = startDate;
-                return booking;
-            }
-            else
-            {
-                Console.WriteLine("Could not retrieve booking, jumping to base options.");
-                return null;
+
+                if (hotelManager.IsDateAvailable(startDate, endDate))
+                {
+                    data = new DateData { Start = startDate, End = endDate };
+                    return true;
+                }
+                else
+                {
+                    if (!questionnaire.GetUserContinueOrCancel())
+                        return false;
+                }
             }
         }
 
