@@ -26,6 +26,8 @@ namespace OOPHotel.Controllers
         public void AddBooking(HotelBooking hotelBooking)
         {
             HotelBookingList.Add(hotelBooking);
+
+            Rooms[hotelBooking.IDRoom - 1].AddPerson(hotelBooking.Person, hotelBooking.StartingDay, hotelBooking.EndDay);
         }
 
         public void CancelBooking(HotelBooking hotelBooking)
@@ -39,14 +41,14 @@ namespace OOPHotel.Controllers
         public DataContainer IsDateAvailable(DateTime startDate, DateTime endDate)
         {
             DataContainer dataContainer = new();
-            
+
 
             for (int i = 0; i < Rooms.Count(); i++)
             {
                 //Person person = new Person("test", "Email", 943423);
                 //HotelBooking hotelBooking = new HotelBooking(person, startDate, endDate, 54);
 
-                if (Rooms[i].IsRoomAvailabel(startDate,endDate))
+                if (Rooms[i].IsRoomAvailabel(startDate, endDate))
                 {
                     dataContainer.IsAvailable = true;
 
