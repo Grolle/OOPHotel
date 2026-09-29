@@ -11,9 +11,9 @@ namespace OOPHotel.Services
 
         #region Greet
         public void GreetUser() => Console.WriteLine("Welcome to OOP Hotel.");
-        public void ConfirmBooking(string name, DateTime date, int id) => Console.WriteLine($"Thank you {name}! Your booking is confirmed for {date}, booking id {id}.");
-        public void ConfirmRebook(string name, DateTime date) => Console.WriteLine($"Thank you {name}! You are rebooked for date {date}.");
-        public void ConfirmCancel(string name, DateTime date) => Console.WriteLine($"Thank you {name}! Your reservation for date {date} is now cancelled.");
+        public void ConfirmBooking(string name, DateTime date, int id) => Console.WriteLine($"Thank you {name}! Your booking is confirmed for {date.Date.ToString("yyyy-MM-dd")}, booking id {id}.");
+        public void ConfirmRebook(string name, DateTime date) => Console.WriteLine($"Thank you {name}! You are rebooked for date {date.Date.ToString("yyyy-MM-dd")}.");
+        public void ConfirmCancel(string name, DateTime date) => Console.WriteLine($"Thank you {name}! Your reservation for date {date.Date.ToString("yyyy-MM-dd")} is now cancelled.");
         public void ReadyForCancellingBooking() => Console.WriteLine("You are ready to cancel your stay at OOPHotel. Please verify information.");
         public void ReadyToYUpdateBooking() => Console.WriteLine("You are ready to update your booking. Please verify information.");
         public void UserPresenter(Person person)
