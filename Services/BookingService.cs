@@ -10,6 +10,7 @@ namespace OOPHotel.Services
         {
             public DateTime Start { get; set; }
             public DateTime End { get; set; }
+            public int roomID { get; set; }
         }
         public enum UserBookingActions
         {
@@ -74,6 +75,7 @@ namespace OOPHotel.Services
                 Person guest = new(name, email, phone);
                 int id = idgenrator.GenerateUniqueID();
                 HotelBooking booking = new(guest, dates.Start, dates.End, id);
+                booking.IDRoom = dates.roomID;
                 return booking;
             }
             else
@@ -100,6 +102,7 @@ namespace OOPHotel.Services
                 {
                     booking.StartingDay = dates.Start;
                     booking.EndDay = dates.End;
+                    booking.IDRoom = dates.roomID;
                     return booking;
                 }
                 else
@@ -123,10 +126,10 @@ namespace OOPHotel.Services
                 DateTime startDate = questionnaire.AskForStartDate();
                 int days = questionnaire.AskForLengthOfStay();
                 DateTime endDate = startDate.AddDays(days);
-
-                if (hotelManager.IsDateAvailable(startDate, endDate))
+                var dateCheck = hotelManager.IsDateAvailable(startDate, endDate);
+                if (dateCheck.IsAvailable)
                 {
-                    data = new DateData { Start = startDate, End = endDate };
+                    data = new DateData { Start = startDate, End = endDate, roomID = dateCheck.IDRoom };
                     return true;
                 }
                 else
