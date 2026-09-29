@@ -23,17 +23,25 @@ namespace OOPHotel.Controllers
 
         }
 
+        private int FindIDRoom(int roomID)
+        {
+            return roomID - 1;
+        }
+
         public void AddBooking(HotelBooking hotelBooking)
         {
             HotelBookingList.Add(hotelBooking);
 
-            Rooms[hotelBooking.IDRoom - 1].AddPerson(hotelBooking.Person, hotelBooking.StartingDay, hotelBooking.EndDay);
+            Rooms[FindIDRoom(hotelBooking.IDRoom)].AddPerson(hotelBooking.Person, hotelBooking.StartingDay, hotelBooking.EndDay);
         }
 
         public void CancelBooking(HotelBooking hotelBooking)
         {
             if (HotelBookingList.Contains(hotelBooking))
+            {
                 HotelBookingList.Remove(hotelBooking);
+                //Rooms[FindIDRoom(hotelBooking.IDRoom)].
+            }
 
             //not sure if we clear room data as well?
         }
