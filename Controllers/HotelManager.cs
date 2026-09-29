@@ -36,19 +36,27 @@ namespace OOPHotel.Controllers
             //not sure if we clear room data as well?
         }
 
-        public bool IsDateAvailable(DateTime startDate, DateTime endDate)
+        public DataContainer IsDateAvailable(DateTime startDate, DateTime endDate)
         {
+            DataContainer dataContainer = new();
+            
+
             for (int i = 0; i < Rooms.Count(); i++)
             {
-                Person person = new Person("test", "Email", 943423);
-                HotelBooking hotelBooking = new HotelBooking(person, startDate, endDate, 54);
-                if (Rooms[i].IsRoomAvailabel(hotelBooking))
+                //Person person = new Person("test", "Email", 943423);
+                //HotelBooking hotelBooking = new HotelBooking(person, startDate, endDate, 54);
+
+                if (Rooms[i].IsRoomAvailabel(startDate,endDate))
                 {
-                    return true;
+                    dataContainer.IsAvailable = true;
+
+                    dataContainer.IDRoom = Rooms[i].IDRoom;
+
+                    return dataContainer;
 
                 }
             }
-            return false;
+            return dataContainer;
         }
 
         public HotelBooking FindBooking(int bookingID) => HotelBookingList.FirstOrDefault(x => x.BookingID == bookingID);
