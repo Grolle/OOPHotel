@@ -42,8 +42,8 @@ namespace OOPHotel.Controllers
         public void RemoveBooking()
         {
             person = null;
-            CheckIn.Subtract(CheckIn);
-            CheckOut.Subtract(CheckOut);
+            CheckIn = DateTime.MinValue;
+            CheckOut = DateTime.MinValue;
         }
     }
 }
