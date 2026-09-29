@@ -18,30 +18,22 @@ namespace OOPHotel.Controllers
 
         bool hasBooking = false;
 
-        public bool IsRoomAvailabel(HotelBooking hotelBooking)
+        public void AddPerson(Person person1, DateTime checkIn, DateTime checkOut)
+        {
+            person = person1;
+            CheckIn = checkIn;
+            CheckOut = checkOut;
+        }
+        public bool IsRoomAvailabel(DateTime startDate, DateTime endDate)
         {
 
-            if (hasBooking == false)
-            {
-                person = hotelBooking.Person;
-                CheckIn = hotelBooking.StartingDay;
-                CheckOut = hotelBooking.EndDay;
 
-                hasBooking = true;
-
-                return true;
-            }
-
-            bool datesOverlap = hotelBooking.StartingDay < CheckOut && hotelBooking.EndDay > CheckIn;
+            bool datesOverlap = startDate < CheckOut && endDate > CheckIn;
 
             if (datesOverlap)
             {
                 return false;
             }
-
-            person = hotelBooking.Person;
-            CheckIn = hotelBooking.StartingDay;
-            CheckOut = hotelBooking.EndDay;
 
             return true;
 
