@@ -74,8 +74,10 @@ namespace OOPHotel.Services
                 int phone = questionnaire.GetPhoneNumber();
                 Person guest = new(name, email, phone);
                 int id = idgenrator.GenerateUniqueID();
-                HotelBooking booking = new(guest, dates.Start, dates.End, id);
-                booking.IDRoom = dates.roomID;
+                HotelBooking booking = new(guest, dates.Start, dates.End, id)
+                {
+                    IDRoom = dates.roomID
+                };
                 return booking;
             }
             else
