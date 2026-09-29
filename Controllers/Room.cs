@@ -38,5 +38,12 @@ namespace OOPHotel.Controllers
             return true;
 
         }
+
+        public void RemoveBooking()
+        {
+            person = null;
+            CheckIn.Subtract(CheckIn);
+            CheckOut.Subtract(CheckOut);
+        }
     }
 }
