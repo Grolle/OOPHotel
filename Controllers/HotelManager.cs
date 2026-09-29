@@ -40,7 +40,7 @@ namespace OOPHotel.Controllers
             if (HotelBookingList.Contains(hotelBooking))
             {
                 HotelBookingList.Remove(hotelBooking);
-                //Rooms[FindIDRoom(hotelBooking.IDRoom)].
+                Rooms[FindIDRoom(hotelBooking.IDRoom)].RemoveBooking();
             }
 
             //not sure if we clear room data as well?
